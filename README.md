@@ -10,23 +10,25 @@ This is a clean, production-ready foundation for building web applications — n
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
-| **Backend** | PHP + Laravel | 8.3+ / 13.x |
-| **Frontend** | React + TypeScript | 19.2.x / 5.7.x |
+| **Backend** | PHP + Laravel | 8.4 / 13.x |
+| **Frontend** | React + TypeScript | 19.x / 5.x |
 | **Bridge** | Inertia.js | 3.0+ |
-| **Styling** | Tailwind CSS + shadcn/ui | 4.0.x / new-york |
-| **Build** | Vite | 8.0.x |
-| **Auth** | Laravel Fortify | 1.34+ |
-| **Testing** | Pest (PHP) | 4.4+ |
+| **Styling** | Tailwind CSS + shadcn/ui | 4.x / new-york |
+| **Build** | Vite | 6.x |
+| **Auth** | Laravel Fortify | 1.x |
+| **Testing** | Pest (PHP) | 4.x |
+| **AI Agents** | BMad + OpenCode | - |
 | **Linting** | ESLint 9 + Prettier | flat config |
 
 ---
 
 ## Prerequisites
 
-- **PHP 8.3+** with extensions: `mbstring`, `xml`, `curl`, `sqlite3` (or your preferred database)
+- **PHP 8.4** with extensions: `mbstring`, `xml`, `curl`, `sqlite3` (or your preferred database)
 - **Composer** 2.x
 - **Node.js 20+** and **npm** (or pnpm/yarn/bun)
 - **Git**
+- **Laravel Herd** (recommended for local development)
 
 ---
 
@@ -79,7 +81,55 @@ npm run dev
 php artisan queue:listen
 ```
 
-Open **http://localhost:8000** in your browser.
+Open **http://localhost:8000** in your browser (or use Laravel Herd at **https://larapos.test**).
+
+---
+
+## AI-Assisted Development
+
+This project is configured for AI-assisted development using **OpenCode** and **BMad** agents.
+
+### OpenCode
+
+OpenCode is the primary AI agent for this project. It provides:
+- Context-aware code generation
+- Laravel-specific knowledge via Laravel Boost MCP
+- Integrated development workflow
+
+```bash
+# Start OpenCode session
+opencode
+```
+
+### BMad Agents
+
+BMad provides specialized AI agents for different development tasks:
+
+| Agent | Purpose |
+|-------|---------|
+| **Barry (Quick Dev)** | Rapid implementation of features and fixes |
+| **Amelia (Dev Story)** | Story-based feature implementation |
+| **John (PM)** | Product requirements and planning |
+| **Winston (Architect)** | Technical architecture decisions |
+| **Sally (UX Designer)** | UI/UX design and specifications |
+| **Quinn (QA)** | Test automation and quality assurance |
+| **Bob (Scrum Master)** | Sprint planning and task management |
+| **Paige (Tech Writer)** | Documentation and technical writing |
+
+```bash
+# Invoke a specific agent
+/opencode bmad:quick-dev
+/opencode bmad:dev-story
+```
+
+### MCP Tools
+
+The project includes Laravel Boost MCP server for:
+- Database schema inspection
+- Read-only queries
+- Application info retrieval
+- Browser error logging
+- URL generation
 
 ---
 
@@ -416,6 +466,26 @@ QUEUE_CONNECTION=database
 
 ## Troubleshooting
 
+### Using Laravel Herd
+
+This project uses Laravel Herd for local development. Herd provides:
+- Automatic HTTPS configuration
+- Built-in PHP server management
+- SSL certificate handling
+
+```bash
+# List your sites
+herd sites
+
+# Start a service (e.g., MySQL, PostgreSQL)
+herd services:start mysql
+
+# Check PHP versions
+herd php:list
+```
+
+Access the application at **https://larapos.test**
+
 ### Vite HMR not working
 ```bash
 # Clear Vite cache
@@ -447,17 +517,56 @@ php artisan migrate:status
 npm run lint && npm run format
 ```
 
+### OpenCode / Laravel Boost MCP Issues
+
+If you encounter issues with OpenCode or Laravel Boost MCP:
+
+```bash
+# Verify MCP server is running
+php artisan boost:mcp --help
+
+# Check Laravel Boost is installed
+composer show laravel/boost
+
+# Regenerate MCP configuration
+php artisan boost:update
+```
+
+### BMad Agents Not Working
+
+```bash
+# Verify OpenCode configuration
+cat opencode.json
+
+# Check skills are installed
+ls -la .opencode/skills/
+```
+
 ---
 
 ## Resources
 
+### Laravel & PHP
 - [Laravel Documentation](https://laravel.com/docs)
+- [Laravel Boost](https://laravel.com/docs/boost)
+- [Pest PHP](https://pestphp.com/)
+- [Laravel Wayfinder](https://github.com/laravel/wayfinder)
+
+### Frontend
 - [Inertia.js Documentation](https://inertiajs.com/)
 - [React Documentation](https://react.dev/)
 - [Tailwind CSS v4](https://tailwindcss.com/docs)
 - [shadcn/ui](https://ui.shadcn.com/)
-- [Pest PHP](https://pestphp.com/)
-- [Laravel Wayfinder](https://github.com/laravel/wayfinder)
+
+### AI Development
+- [OpenCode Documentation](https://opencode.ai)
+- [BMad Agents](https://github.com/anomalyco/opencode-agents)
+
+### Deployment
+- [Laravel Forge](https://forge.laravel.com/)
+- [Laravel Vapor](https://vapor.laravel.com/)
+- [Railway](https://railway.app/)
+- [Render](https://render.com/)
 
 ---
 
